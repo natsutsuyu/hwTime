@@ -1,0 +1,63 @@
+// const MyArr = [];
+// const randomValueFromArray = (arr) => {
+//     if (arr.length === 0) {
+//         return "Empty Array";
+//     }
+//     else {
+//         const index = Math.floor(Math.random() * arr.length);
+//         return arr[index];
+//     }
+// }
+// console.log(randomValueFromArray(MyArr));
+
+//2(1 sposob)
+// const MyArr = [1, 2, 3, 4, 5, 6];
+// const MaxValueFromArray = (arr) => {
+//     if (arr.length === 0) {
+//         return "Infinity";
+//     }
+//     let tmp = arr[0];
+//     for (const element of arr) {
+//         if (element > tmp) {
+//             tmp = element;
+//         }
+//     }
+//     return tmp;
+// };
+
+// console.log(MaxValueFromArray(MyArr));
+
+//2(2 sposob)
+// const MyArr = [1, 2, 3, 4, 5, 6];
+// const MaxValueFromArray = (arr) => {
+//     if (arr.length === 0) {
+//         return "Infinity";
+//     }
+//     return Math.max(...arr);
+// };
+
+// console.log(MaxValueFromArray(MyArr));
+
+//3
+// const length=6;
+// const randomStringFromArray=(length)=>{
+//     const Chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';
+//     let res='';
+//     const charsLength=Chars.length;
+//     for(let i=0; i<length; i++){
+//         res+=Chars.charAt(Math.random()*charsLength);
+//     }
+//     return res;
+// }
+
+// console.log(randomStringFromArray(length));
+
+//4
+function daysInMonth(month, year) {
+    const date = new Date(year, month - 1, 1);
+    return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+}
+
+const userYear = Number(prompt("Введите год:"));
+const userMonth = Number(prompt("Введите номер месяца (1-12):"));
+console.log(daysInMonth(userMonth, userYear));
