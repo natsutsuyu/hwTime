@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        ///1
+        // const titles = ['Заголовок 1', 'Очень длинный заголовок во всей книжке', 'Заголовок 2'];
+        // const pages = [10, 20, 123456789012345];
+
+        // const maxLength = 20;
+
+        // for (let i = 0; i < titles.length; i++) {
+        //   const title = titles[i];
+        //   const page = pages[i].toString();
+        //   const titleLength = title.length;
+        //   const pageLength = page.length;
+        //   let output = title;
+
+        //   if (titleLength + pageLength < maxLength) {
+        //     const dots = '.'.repeat(maxLength - titleLength - pageLength);
+        //     output += dots;
+        //   } else {
+        //     output += '.';
+        //   }
+
+        //   output += page;
+
+        //   console.log(output);
+        // }
+
+        ///2
+        // const obj = {
+        //   name: 'Alex',
+        //   surName: 'Max',
+        //   AGE: 40
+        // };
+
+        // while (true) {
+        //   const userInput = prompt('Введите название поля (или "exit" для завершения):');
+
+
+        //   if (userInput === 'exit') {
+        //     break;
+        //   }
+
+        //   const fieldToCheck = userInput.toLowerCase();
+
+        //   const isFieldExist = fieldToCheck in obj;
+
+        //   console.log(`${userInput} -> ${isFieldExist}`);
+        // }
+
+        ///3
+
+        while (true) {
+            const inputString = prompt("Write anything to reverse:");
+
+            if (inputString === null) {
+                break;
+            }
+
+            const charArray = inputString.split('');
+            for (let i = 0; i < charArray.length; i++) {
+                const char = charArray[i];
+
+                if (char.toLowerCase() === char) {
+                    charArray[i] = char.toUpperCase();
+                } else {
+                    charArray[i] = char.toLowerCase();
+                }
+            }
+
+            const InputReverse = [];
+            for (let i = charArray.length - 1; i >= 0; i--) {
+                InputReverse.push(charArray[i]);
+            }
+
+            console.log(InputReverse.join(''));
+        }
+</body>
+
+</html>

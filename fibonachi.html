@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+
+  <script>
+    const FibonaciElement=(n)=>{
+      if (n==0){
+        return n;
+      }
+      else if(n<0){
+        return "Wrong place!";
+      }
+      else{
+        let num1=0;
+        let num2=1;
+        let tmp;
+
+        for(let i=2; i<=n; i++){
+          tmp=num1+num2;
+          num1=num2;
+          num2=tmp;
+        }
+        return num2;
+      }
+    }
+
+    const place=+prompt("Write any number!");
+    console.log(FibonaciElement(place));
+  </script>
+</body>
+</html>
