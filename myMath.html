@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        console.clear();
+
+        function myMath(operation, ...args) {
+            const isOperationAlreadyExist = operation in Math;
+
+            if (isOperationAlreadyExist && typeof (operation) == 'function') {
+                return Math[operation](...args);
+            }
+            else if (isOperationAlreadyExist && typeof (operation) != 'function') {
+                return Math[operation];
+            }
+            else {
+                switch (operation) {
+                    case 'sum': {
+                        let sum = 0;
+
+                        for (let i = 0; i < args.length; ++i) {
+                            sum += args[i];
+                        }
+
+                        return sum;
+                        break;
+                    }
+                    case 'multiply': {
+                        let product = 1;
+                        for (const element of args) {
+                            product *= element;
+                        }
+                        return product;
+                        break;
+                    }
+                    case 'division': {
+                        let res = 1;
+                        for (const element of args) {
+                            if (element != args[0] && element == 0) {
+                                res = 'can`t divide by zero! One of elements is zero.'
+                                break;
+                            }
+                            else {
+                                res /= element;
+                            }
+                        }
+                        return res;
+                    }
+                    case 'subtract': {
+                        let sub = 0;
+                        for (const element of args) {
+                            sub -= element;
+                        }
+                        return sub;
+                    }
+                    default: {
+                        return 'Wrong operation'
+                    }
+
+                }
+            }
+        }
+
+        const sum = myMath('sum', 1, 2, 3, 4, 5);
+        const mult = myMath('multiply', 2, 4, 7, 9);
+        const div = myMath('division', 12, 5, 8);
+        const sub=myMath('subtract', 2,6,8,9)
+
+        console.log(sum);
+        console.log(mult);
+        console.log(div);
+        console.log(sub);
+
+
+    </script>
+</body>
+
+</html>
