@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //1
+        // const MysetInterval = (callback, interval) => {
+        //     const someFunc = () => {
+        //         callback();
+        //         setTimeout(someFunc, interval);
+        //     };
+
+        //     setTimeout(someFunc, interval);
+        // };
+
+        // function printHello() {
+        //     console.log("Hello");
+        // }
+
+        // MysetInterval(printHello, 1000);
+
+        //2
+        // const arr=[1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+        // const printElementsEverySecond=(arr)=>{
+        //     let i=0;
+        //     const interval=setInterval(()=>{
+        //         if (i<arr.length){
+        //             console.log(arr[i]);
+        //             i++;
+        //         }
+        //         else{
+        //             clearInterval(interval);
+        //         }
+        //     }, 1000)
+
+        // }
+        // printElementsEverySecond(arr);
+
+        //3
+        // const timer=(start, time)=>{
+        //     let startpoint=start;
+        //     const interval=setInterval(()=>{
+        //         console.log(startpoint);
+        //         startpoint--;
+        //         if (startpoint<0){
+        //             clearInterval(interval);
+        //         }
+        //     }, time*1000)
+        // }
+        // timer(100, 1)
+
+        //4
+        function isValidTimeFormat(time) {
+            const timeParts = time.split(':');
+            if (timeParts.length !== 3) {
+                return false;
+            }
+
+            const [hours, minutes, seconds] = timeParts;
+            if (
+                hours.length!=2 || minutes.length!=2 || seconds.length!=2
+            ) {
+                return false;
+            }
+
+            return true;
+        }
+
+        function setAlarm(time) {
+            if (!isValidTimeFormat(time)) {
+                console.error('Ошибка: Неверный формат времени');
+                return;
+            }
+
+            const timeParts = time.split(':');
+            const hours = Number(timeParts[0]);
+            const minutes = Number(timeParts[1]);
+            const seconds = Number(timeParts[2]);
+
+            const currentTime = new Date();
+            const currentHours = currentTime.getHours();
+            const currentMinutes = currentTime.getMinutes();
+            const currentSeconds = currentTime.getSeconds();
+
+            if (hours === currentHours && minutes === currentMinutes && seconds === currentSeconds) {
+                console.log('Будильник сработал!');
+                return;
+            }
+
+            const differenceInMs = (hours - currentHours) * 3600000 +
+                (minutes - currentMinutes) * 60000 +
+                (seconds - currentSeconds) * 1000;
+
+            setTimeout(() => {
+                console.log('Будильник сработал!');
+            }, differenceInMs);
+        }
+        setAlarm('10:40:00');
+    </script>
+</body>
+
+</html>
