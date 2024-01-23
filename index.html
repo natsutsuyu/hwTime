@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        //в MyArray добавить методы shift unshift
+
+        function MyArray(...args) {
+            this.elements = {
+                length: 0
+            }
+
+            this.push = function (...args) {
+                for (const arg of args) {
+                    const index = this.elements.length;
+
+                    this.elements[index] = arg;
+
+                    ++this.elements.length;
+                }
+
+                return this.elements.length;
+            }
+
+            this.pop = function () {
+                const length = this.elements.length;
+
+                if (length === 0) return;
+
+                const returnValue = this.elements[length - 1];
+
+                delete this.elements[length - 1];
+
+                --this.elements.length;
+
+                return returnValue;
+            }
+
+            this.push(...args);
+
+
+            this.shift=function(){
+                if(this.elements.length===0) return;
+                const returnValue=this.elements[0];
+                delete this.elements[0];
+                --this.elements.length
+                return returnValue;
+            }
+            this.unshift = function (...args) {
+                const originalLength = this.elements.length;
+                this.elements.length += args.length;
+                for (let i = originalLength - 1; i >= 0; i--) {
+                    this.elements[i + args.length] = this.elements[i];
+                }
+                for (let i = 0; i < args.length; i++) {
+                    this.elements[i] = args[i];
+                }
+                return this.elements.length;
+            }
+        }
+
+        const arr = new MyArray(1, '2', [3]);
+
+        console.log(arr.elements);
+
+        const firstElement=arr.shift();
+        console.log(firstElement, arr.elements);
+
+        const length=arr.unshift(2, 4, '3');
+        console.log(length, arr.elements);
+        
+    </script>
+</body>
+
+</html>
